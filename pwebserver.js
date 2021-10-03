@@ -5,6 +5,7 @@ const cors = require('cors');
 const assert = require("assert");
 const Photonapi = require("./dist/binding.js");
 const fs = require("fs");
+const axios = require('axios');
 
 const app = express();
 
@@ -15,24 +16,21 @@ app.use(bodyParser.urlencoded({
   }));
 app.use(bodyParser.json({ limit: '3000kb' }));
 
-
-
 app.post('/search/', (req, res) => {
   console.log("search");
   const requester = connectSS();
-
-  console.log("jsoreq.body.url");
-  console.log(req.body.url);
-
-  if (req.body.url==="none"){
-    const buf = new Buffer.from(req.body.buffer,'ascii');
-    var jsonStr = Photonapi.Search(requester, "none" , buf , 0, 2, false, false);
-  } else {   
-    var jsonStr = Photonapi.Search(requester, "https://dejavuai.com/images/mirflickr/0/8/88962.jpg" , '' , 0, 2, false, false);
-  }
+  const buf = new Buffer.from(req.body.buffer,'ascii');
+  var jsonStr = Photonapi.Search(requester, "none" , buf , 0, req.body.rotation, req.body.mirrored, false);
   disconnectSS(requester);
   res.send(jsonStr);
 })
+
+app.post('/searchurl/', (req, res) => {
+  const imageData = processUrlSearch(req,res);
+})
+
+
+
 
 app.get('/getthumbnail/:id', (req, res) => {
   console.log("app.get(/getthumbnail/:id");
@@ -45,6 +43,20 @@ app.get('/getthumbnail/:id', (req, res) => {
 app.listen(3001, () => {})
 
 // ------------- functions
+
+
+const processUrlSearch = async (req,res) => {
+  try {
+    axiosres = (await axios.get(req.body.url, { responseType: 'arraybuffer' })); 
+  } catch(e) {
+        console.log('Catch an error: ', e);
+  } 
+  const buf = new Buffer.from(axiosres.data,'ascii');
+  const requester = connectSS();
+  var jsonStr = Photonapi.Search(requester, "none" , buf , 0, req.body.rotation, req.body.mirrored, false);
+  disconnectSS(requester);
+  res.send(jsonStr);
+}
 
 function connectSS() {
   initRes = Photonapi.Init();
