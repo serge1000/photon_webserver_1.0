@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { response } = require('express');
-const WebSocket = require("ws");
 const cors = require('cors');
 const assert = require("assert");
 const Photonapi = require("./dist/binding.js");
@@ -27,16 +26,10 @@ app.post('/search/', (req, res) => {
 
   if (req.body.url==="none"){
     const buf = new Buffer.from(req.body.buffer,'ascii');
-    console.log("in non");
     var jsonStr = Photonapi.Search(requester, "none" , buf , 0, 2, false, false);
   } else {   
-    console.log("in урл");
-    console.log(buf);
     var jsonStr = Photonapi.Search(requester, "https://dejavuai.com/images/mirflickr/0/8/88962.jpg" , '' , 0, 2, false, false);
   }
-  console.log("jsonStr");
-  console.log(jsonStr);
-  console.log("---------------");
   disconnectSS(requester);
   res.send(jsonStr);
 })
@@ -44,16 +37,8 @@ app.post('/search/', (req, res) => {
 app.get('/getthumbnail/:id', (req, res) => {
   console.log("app.get(/getthumbnail/:id");
   const requester = connectSS();
-  // request super server for thumbnail (SS)
-  console.log("req.params.id :");
-  console.log(req.params.id);
-  console.log(typeof req.params.id);
-  console.log("----------------");
   thumbData = Photonapi.GetThumbnail(requester, Number(req.params.id), "JPEG");
   disconnectSS(requester);
-  console.log("thumbData :");
-  console.log(thumbData);
-  console.log(typeof thumbData);
   res.send("data:image/png;base64," + Buffer.from(thumbData.data).toString('base64'));
 })
 
