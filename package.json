@@ -1,0 +1,30 @@
+{
+    "main": "lib/binding.js",
+    "dependencies": {
+        "axios": "^0.21.4",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "node-addon-api": "^1.1.0",
+        "nodemon": "^2.0.13",
+        "request": "^2.88.2",
+        "ws": "^8.2.2"
+    },
+    "scripts": {
+        "pretest": "tsc",
+        "test": "node --napi-modules ./test/test_binding.js",
+        "build": "node-gyp rebuild",
+        "clean": "node-gyp clean",
+        "start": "nodemon pwebserver.js"
+    },
+    "gypfile": true,
+    "name": "photonapi",
+    "version": "1.0.0",
+    "description": "Photon Web Server API",
+    "author": "Sergei for 1st1 Technologies LLP",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^7.0.22",
+        "typescript": "^2.3.3"
+    }
+}

@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "photonapi-native", "photonapi-native.vcxproj", "{FC9C5D9B-19DD-A954-F5C8-92FE37049E29}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55890577-15A6-20D8-7336-CAC6EA56A162} = {55890577-15A6-20D8-7336-CAC6EA56A162}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "..\node_modules\node-addon-api\src\nothing.vcxproj", "{55890577-15A6-20D8-7336-CAC6EA56A162}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Users)", "..\Users", "{83FD2216-DE8C-3729-D4EA-3618B14F3F2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Alex)", "..\Users\Alex", "{9ABD358C-335A-E478-0239-92FACEE09794}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(photon_webserver_1.0)", "..\Users\Alex\photon_webserver_1.0", "{319894EF-8801-F135-743F-1EE22129F641}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\Users\Alex\photon_webserver_1.0\node_modules", "{77EE0BE6-F3B9-0EAF-C173-4B40A4971D6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\Users\Alex\photon_webserver_1.0\node_modules\node-addon-api", "{886A4202-E93C-FB02-7256-4A362D21D202}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(src)", "..\Users\Alex\photon_webserver_1.0\node_modules\node-addon-api\src", "{80D01DA8-EA75-9ECC-2DFD-5857570434AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55890577-15A6-20D8-7336-CAC6EA56A162}.Release|x64.ActiveCfg = Release|x64
+		{55890577-15A6-20D8-7336-CAC6EA56A162}.Release|x64.Build.0 = Release|x64
+		{55890577-15A6-20D8-7336-CAC6EA56A162}.Debug|x64.ActiveCfg = Debug|x64
+		{55890577-15A6-20D8-7336-CAC6EA56A162}.Debug|x64.Build.0 = Debug|x64
+		{FC9C5D9B-19DD-A954-F5C8-92FE37049E29}.Release|x64.ActiveCfg = Release|x64
+		{FC9C5D9B-19DD-A954-F5C8-92FE37049E29}.Release|x64.Build.0 = Release|x64
+		{FC9C5D9B-19DD-A954-F5C8-92FE37049E29}.Debug|x64.ActiveCfg = Debug|x64
+		{FC9C5D9B-19DD-A954-F5C8-92FE37049E29}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9ABD358C-335A-E478-0239-92FACEE09794} = {83FD2216-DE8C-3729-D4EA-3618B14F3F2D}
+		{319894EF-8801-F135-743F-1EE22129F641} = {9ABD358C-335A-E478-0239-92FACEE09794}
+		{77EE0BE6-F3B9-0EAF-C173-4B40A4971D6B} = {319894EF-8801-F135-743F-1EE22129F641}
+		{886A4202-E93C-FB02-7256-4A362D21D202} = {77EE0BE6-F3B9-0EAF-C173-4B40A4971D6B}
+		{80D01DA8-EA75-9ECC-2DFD-5857570434AF} = {886A4202-E93C-FB02-7256-4A362D21D202}
+		{55890577-15A6-20D8-7336-CAC6EA56A162} = {80D01DA8-EA75-9ECC-2DFD-5857570434AF}
+	EndGlobalSection
+EndGlobal
